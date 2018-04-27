@@ -1,0 +1,31 @@
+{
+  "name": "npm_api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^5.1.1",
+    "supertest": "^3.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LilianeAquino/webhook-tdd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LilianeAquino/webhook-tdd/issues"
+  },
+  "homepage": "https://github.com/LilianeAquino/webhook-tdd#readme",
+  "description": ""
+}
