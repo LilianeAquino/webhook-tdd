@@ -1,25 +1,29 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const server = express();
-const port = 6001;
+const port = 6002;
 
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({
         extended: true
 }));
 
-//hub.mode=subscribe * hub.challenge=olá *hub.verify_token=subscribe
+let hub = {
+    mode: 'subscribe',
+    challenge: 'Olá, Ser Humano',
+    verify_token: 'subscribe'
+};
 
 server.get('/webhook', (req, res) => {
-
-    if (req.query['hub.mode'] && req.query['hub.verify_token'] === 'subscribe'){
-        res.send(req.query['hub.challenge']);
-        res.status(200).end();        
-    }else{    
+    
+    if (req.query['hub.mode'] != hub.mode || req.query['hub.verify_token'] != hub.verify_token || req.query['hub.challenge'] != hub.challenge ){
         res.status(403).end();
+    }else{    
+        res.send(hub.challenge);
+        res.status(200).end(); 
     }
-
 });
+
 
 server.post('/webhook', (req, res) => {
     res.send('Olá');
