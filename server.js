@@ -10,16 +10,15 @@ server.use(bodyParser.urlencoded({
 
 let hub = {
     mode: 'subscribe',
-    challenge: 'Olá, Ser Humano',
-    verify_token: 'subscribe'
+    verify_token: 'jNmYkDS24V'
 };
 
 server.get('/webhook', (req, res) => {
     
-    if (req.query['hub.mode'] != hub.mode || req.query['hub.verify_token'] != hub.verify_token || req.query['hub.challenge'] != hub.challenge ){
+    if (req.query['hub.mode'] != hub.mode || req.query['hub.verify_token'] != hub.verify_token){
         res.status(403).end();
     }else{    
-        res.send(hub.challenge);
+        res.send(req.query['hub.challenge']);
         res.status(200).end(); 
     }
 });
